@@ -25,4 +25,10 @@
     
   }
 
+  interface ReviewItem {
+    _id: string,
+    user: string,
+    content: string
+  }
+
   
