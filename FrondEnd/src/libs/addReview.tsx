@@ -25,7 +25,6 @@ export default async function addReview(contentReview:string,idcamp:string) {
         }),
     } )
      if (!response.ok) {
-        
         throw new Error("Failed to add Review")
         
      } 
