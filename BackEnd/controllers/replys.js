@@ -73,41 +73,41 @@ exports.getReply=async (req,res,next)=> {
  }
 }
 
-// //@desc Add single appointments
-// //@route POST /api/v1/campgrounds/:campgroundId/appointments/
-// //@access Private
-// exports.addReview=async (req,res,next)=> {
-//    try {
-//      req.body.campground=req.params.campgroundId;
+//@desc Add single reply
+//@route POST /api/v1/reviews/:reviewId/replys/
+//@access Private
+exports.addReply=async (req,res,next)=> {
+   try {
+     req.body.review=req.params.reviewId;
 
-//      const campground=await Campground.findById(req.params.campgroundId);
-//      if (!campground) {
-//         return res.status(404).json({success: false, message: `No campground with the id of ${req.params.campgroundId}`});
-//      }
+    //  const re=await Campground.findById(req.params.campgroundId);
+    //  if (!campground) {
+    //     return res.status(404).json({success: false, message: `No campground with the id of ${req.params.campgroundId}`});
+    //  }
 
-//    //add user Id to req.body
-// //    req.body.user=req.user.id;
+   //add user Id to req.body
+//    req.body.user=req.user.id;
 
-// // // //Check for existed booking
-// // const exitedBookings = await Booking.find({user:req.user.id});
+// // //Check for existed booking
+// const exitedBookings = await Booking.find({user:req.user.id});
 
-// // //if the user is not an admin, they can only create 3 appointment.
-// // if (exitedBookings.length >= 4 && req.user.role !== 'admin') {
-// //     return res.status(400).json({success:false,message:`The user with ID ${req.user.id} has already made 4 bookings`});
-// //   }
-// //   if (req.body.night > 3) {
-// //    return res.status(400).json({success:false,message:"You cannot book more than 3 nights"});
-// //   }
-//   const review = await Review.create(req.body);
-//   res.status(201).json({success:true, data: review});
+// //if the user is not an admin, they can only create 3 appointment.
+// if (exitedBookings.length >= 4 && req.user.role !== 'admin') {
+//     return res.status(400).json({success:false,message:`The user with ID ${req.user.id} has already made 4 bookings`});
+//   }
+//   if (req.body.night > 3) {
+//    return res.status(400).json({success:false,message:"You cannot book more than 3 nights"});
+//   }
+  const reply = await Reply.create(req.body);
+  res.status(201).json({success:true, data: reply});
 
 
 
-//    } catch(err) {
-//      console.log(err.stack);
-//      return res.status(500).json({success:false,message:'Cannot create booking'});
-//    }
-// }
+   } catch(err) {
+     console.log(err.stack);
+     return res.status(500).json({success:false,message:'Cannot create reply'});
+   }
+}
 
 // // //@desc Update appointments
 // // //@route PUT /api/v1/hospitals/:hospitalId/appointments/

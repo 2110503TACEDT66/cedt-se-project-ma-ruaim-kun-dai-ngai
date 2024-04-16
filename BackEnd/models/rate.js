@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const ReplySchema=new mongoose.Schema({
-    replyContent: {
-        type: String,
+    rateContent: {
+        type: Int16Array,
         required: true
     },
     user: {
@@ -10,10 +10,11 @@ const ReplySchema=new mongoose.Schema({
         ref:'User',
         required:true
     },
-    review: {
+    campground : {
         type: mongoose.Schema.ObjectId,
-        ref: 'Review',
+        ref: 'Campground',
         required:true
+
     },
     createdAt: {
         type: Date,
@@ -21,4 +22,4 @@ const ReplySchema=new mongoose.Schema({
     },
 });
 
-module.exports=mongoose.model('Reply',ReplySchema);
+module.exports=mongoose.model('Rate',ReplySchema);

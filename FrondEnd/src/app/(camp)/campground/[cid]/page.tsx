@@ -4,10 +4,8 @@ import Link from 'next/link'
 import getReviews from '@/libs/getReviews'
 import Reviewlist from '@/components/reviewlist'
 import addReview from '@/libs/addReview'
-import RefreshRouter from '../../../../../refreshRouter'
 import { revalidateTag } from "next/cache";
-import { useRouter } from 'next/router';
-import RefreshActionReviews from '../../../../../refreshActionReviews'
+
 export default async function CampDetailPage({params} : {params:{cid:string}} ) {
 
      const util = require('util')
@@ -19,33 +17,17 @@ export default async function CampDetailPage({params} : {params:{cid:string}} ) 
     console.log(reviews)
  
   
-    
-
-
-
-
     const addUser = async (addReviewData:FormData) => {
       "use server"
        const reviewText = addReviewData.get("reviewText")
       if (reviewText) {
         addReview(reviewText.toString(),params.cid)
         // console.log('revalidate na')
-        
-        
-       
-        
-
-      
-       
-         
+        await new Promise( (resolve)=>setTimeout(resolve,1000) )
+        revalidateTag('reviews')
       }
     }
 
-    // const mockCarRepo = new Map()
-    // mockCarRepo.set("001" , {name:"Honda Civic", image: "/img/civic.jpg"} )
-    // mockCarRepo.set("002" , {name:"Honda Accord", image: "/img/accord.jpg"} )
-    // mockCarRepo.set("003" , {name:"Toyota Fortuner", image: "/img/fortuner.jpg"} )
-    // mockCarRepo.set("004" , {name:"Honda Model 3", image: "/img/tesla.jpg"} )
     return (
       <main className="text-center">
          
@@ -76,7 +58,7 @@ export default async function CampDetailPage({params} : {params:{cid:string}} ) 
          <div className='bg-black w-full h-[30px]'></div>
         
 
-         <div className="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold my-5 mx-[100px]"  >reload</div>
+         
 
         <form action={addUser}>
        
