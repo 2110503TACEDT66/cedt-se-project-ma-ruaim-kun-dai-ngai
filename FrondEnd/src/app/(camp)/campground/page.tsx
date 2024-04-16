@@ -6,6 +6,7 @@ import Image from "next/image";
 import { LinearProgress } from "@mui/material";
 import { getTodayDate } from "@mui/x-date-pickers/internals";
 import DateBar from "@/components/DateBar";
+import getReviews from "@/libs/getReviews";
 import { revalidateTag } from "next/cache";
 export default async function Campground() {
         revalidateTag("camps")
@@ -36,6 +37,8 @@ export default async function Campground() {
         <Suspense fallback={<p>Loading....<LinearProgress></LinearProgress></p>}>
         <CarCatalog campJson={camps} />
         </Suspense>
+
+        
 
         {/* <hr className="my-10" />
         <h1 className='text-x font-md '>Try Client-side Car Panel</h1>

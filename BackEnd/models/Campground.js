@@ -20,7 +20,8 @@ address:{
   required : [true, 'Please add an address']
 },
  tel:{
-    type: String
+  type: String
+  
  }
 },{
     toJSON : {virtuals:true},

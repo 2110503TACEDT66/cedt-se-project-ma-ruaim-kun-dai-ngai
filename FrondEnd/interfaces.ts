@@ -13,6 +13,13 @@
     pagination: Object,
     data: CampgroundItem[]
   }
+  
+  interface ReviewJson {
+    success: boolean,
+    count: number,
+    data: CampgroundItem[]
+  }
+
 
   interface CampgroundItem {
     _id: string,
@@ -24,11 +31,27 @@
 
     
   }
+  interface UserItem {
+    _id: string,
+    name:string,
+    
+  }
 
   interface ReviewItem {
     _id: string,
-    user: string,
-    content: string
+    content:string,
+    user:UserItem,
+    
+    
   }
+
+  
+  interface ReplyItem {
+    _id: string,
+    replyContent:string,
+    user:UserItem,
+    
+  }
+
 
   

@@ -7,17 +7,21 @@ const User = require('../models/User');
 //@access Public
 exports.getReviews = async (req,res,next)=> {
    let query;   
-    if (req.params.campgroundID) {
+    if (req.params.campgroundId) {
         query = Review.find({campground: req.params.campgroundId}).populate({
-           path:"campground",
-           select: "name address tel",
+           path:"user",
+           select: "name",
         });
 
-    } else 
+        
+
+    } else {
+    
     query=Review.find().populate({
-     path:'campground',
-     select: 'name address tel'
+     path:'user',
+     select: "name"
     });
+   }
    
    try {
     const reviews = await query;
