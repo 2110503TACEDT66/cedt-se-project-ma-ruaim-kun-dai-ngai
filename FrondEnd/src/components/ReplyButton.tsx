@@ -26,13 +26,15 @@ export default function ReplyButton({reviewId, token, checkCanReply} : {reviewId
 
   return (
     <div>
-      <button onClick={()=>setShowButtons(!showButtons)} className="bg-black text-white hover:bg-red-800 hover:border-red-800 hover:text-black text-white px-4 py-1 rounded-md border-solid border-2 border-white font-normal text-xl underline-offset-0 my-4">
-        {showButtons ? 'Reply' : 'Reply'}
+      <button onClick={()=>setShowButtons(!showButtons)} className="bg-indigo-600 text-white hover:bg-cyan-600 px-4 py-1 rounded-xl font-bold underline-offset-0 my-3 mx-2">
+        {showButtons ? 'REPLY' : 'REPLY'}
       </button>
       {showButtons ?
-        <div className="my-5 mx-5">
-            <input type="text" id="replyText" name="replyText" placeholder="Add your reply" onChange={(e) => setReplyText(e.target.value)}/>
-            <input type="submit" id="submitReply" name="submitReply" placeholder="Send reply" onClick={() => {addReply(replyText, reviewId, token , checkCanReply);  RefreshActionReplys();}}/>
+        <div className="mx-5 flex flex-row w-full justify-center">
+            <input type="text" id="replyText" name="replyText" placeholder="Add your reply" 
+            className="border border-2 text-center mx-2"
+            onChange={(e) => setReplyText(e.target.value)}/>
+            <div className="w-fit h-fit font-semibold px-2 py-2" onClick={() => {addReply(replyText, reviewId, token , checkCanReply);  RefreshActionReplys();}}>SEND</div>
         </div> : null
               }
     </div>

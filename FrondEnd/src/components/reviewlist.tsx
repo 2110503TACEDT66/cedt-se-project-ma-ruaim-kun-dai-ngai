@@ -37,12 +37,13 @@ export default async function reviewlist({reviewItems, token, checkCanReply, rol
 
     return (
         <div className="bg-white my-3">
-            <div> {reviewItems.user.name}</div>
-            <div> {reviewItems.content}</div>
-            <ReplyButton reviewId={reviewItems._id} token={token} checkCanReply={checkCanReply}/>
+            <div className="font-semibold pt-3"> {reviewItems.user.name}</div>
+            <div className="pt-1"> {reviewItems.content}</div>
+            <div className="flex flex-row justify-center">
+                <ReplyButton reviewId={reviewItems._id} token={token} checkCanReply={checkCanReply}/>
 
-            <DeleteReviewButton reviewId={reviewItems._id} token={token} isAdmin={isAdmin}/>
-
+                <DeleteReviewButton reviewId={reviewItems._id} token={token} isAdmin={isAdmin}/>
+            </div>
 {/* 
            <div className="bg-slate-400"> 
            {

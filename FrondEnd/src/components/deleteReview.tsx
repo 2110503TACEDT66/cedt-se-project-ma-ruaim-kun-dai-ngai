@@ -29,8 +29,8 @@ export default function DeleteReviewButton({reviewId, token, isAdmin} : {reviewI
   return (
     <>
     {isAdmin?
-        <div className="my-5 mx-5">
-            <div className="w-fit h-fit rounded-xl px-2 py-2" onClick={() => {deleteReview(reviewId, token); RefreshActionReviews();}}>Delete</div>
+        <div>
+            <div className="rounded-xl px-4 py-1 hover:bg-indigo-600 text-white bg-green-500 font-bold mx-2 my-3" onClick={() => {deleteReview(reviewId, token); RefreshActionReviews();}}>DELETE</div>
         </div> 
         : null
     }

@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth"
 import getUserProfile from "./getUserProfile"
 import { authOptions } from "@/libs/auth"
 import { revalidateTag } from "next/cache"
-export default async function addRate(contentRate:Number,idcamp:string,User:string,checkCanRate:boolean) {
+export default async function addRate(contentRate:Number,idcamp:string,User:string,checkCanRate:boolean, rateOnce:boolean) {
     // const session = await getServerSession(authOptions)
     // if (!session || !session.user.token ) return 
         
@@ -15,7 +15,7 @@ export default async function addRate(contentRate:Number,idcamp:string,User:stri
     console.log(idcamp)
     console.log(User)
 
-    if(checkCanRate) {
+    if(checkCanRate && !rateOnce) {
     const response = await fetch(`${process.env.BACKEND_URL}/api/v1/campgrounds/${idcamp}/rates` , {
         method : "POST",
         headers : {

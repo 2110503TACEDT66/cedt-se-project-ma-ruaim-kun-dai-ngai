@@ -69,35 +69,38 @@ export default async function CampDetailPage({params} : {params:{cid:string}} ) 
                <div className='absolute text-white z-30 top-[150px] left-[40px] text-5xl font-bold'>THE BEST SERVICE</div>
                </div>
 
-             <div >
+             <div className='w-[50%] h-full'>
 
               <div className=' mx-[150px] my-20 text-left text-white font-bold text-5xl uppercase'> {campDetail.data.name}</div>
-              
+              <Pagerating checkCanRate={checkCanReview} paa={params.cid.toString()}/>
 
              <Link href={`/reservations?id=${params.cid}&model=${campDetail.data.name}`}>
-             <button className="rounded-xl font-bold bg-orange-500 text-white px-5 py-4 hover:bg-indigo-600 hover:text-white uppercase my-[50px] ">SELECT {campDetail.data.name}</button>
+             
+             <button className="rounded-xl font-bold bg-orange-500 text-white px-5 py-4 hover:bg-indigo-600 hover:text-white uppercase my-[50px] mx-[150px]">SELECT {campDetail.data.name}</button>
              </Link>
              </div>
 
              
          </div>        
 
-        <form action={addUser} className='w-full items-center flex flex-col my-5'>
-          <input type='text' required id="reviewText" name="reviewText" placeholder='Type your review here' className="bg-white text-center border border-2 border-gray-200 rounded-xl w-[315px] p-2 text-gray-700  hover:ring-transparent"></input>
-          <button type="submit" className="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold my-5 mx-[100px] hover:bg-cyan-600 hover:transparent" >COMMENT</button>
-        </form>
+        <div className='w-screen flex flex-row'>
+          <div className='w-1/2 ml-0'>
+            <form action={addUser} className='w-full items-center flex flex-row my-5 justify-center'>
+              <input type='text' required id="reviewText" name="reviewText" placeholder='Type your review here' className="bg-white text-center border border-2 border-gray-200 rounded-xl w-[500px] h-[50px] p-2 text-gray-700"></input>
+              <button type="submit" className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >COMMENT</button>
+            </form>
+          </div>
 
-        <Pagerating checkCanRate={checkCanReview} paa={params.cid.toString()}/>
-
-         
-         {
-            reviews.data.map((reviewItems:ReviewItem)=>(
-                     
-                <Reviewlist reviewItems={reviewItems} token={session?.user.token} checkCanReply={checkCanReview} role={session?.user.role}/>
-                
-              ))
-        }
-
+          <div className='w-full mr-0'>
+            {
+                reviews.data.map((reviewItems:ReviewItem)=>(
+                        
+                    <Reviewlist reviewItems={reviewItems} token={session?.user.token} checkCanReply={checkCanReview} role={session?.user.role}/>
+                    
+                  ))
+            }
+          </div>
+        </div>
         
       </main>
 
