@@ -1,6 +1,6 @@
 
 
-export default async function deleteBooking(id:string,token:string) {
+export default async function deleteBooking(id:string,token:string|undefined) {
     
       
          console.log(id)

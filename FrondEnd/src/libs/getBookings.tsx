@@ -1,8 +1,9 @@
 
 
 
-export default async function getBookings(token:string) {
+export default async function getBookings(token:string|undefined) {
     // await new Promise((resolve)=>setTimeout(resolve,1000))
+    if(token == undefined) return
 
     const response = await fetch(`${process.env.BACKEND_URL}/api/v1/bookings`,  {
         next: {tags:['bookings']},

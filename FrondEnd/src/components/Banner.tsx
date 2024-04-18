@@ -21,22 +21,24 @@ export default function Banner() {
     <div className={styles.banner} onClick={()=>{setIndex(index+1)}}>
       <Image src = {covers[index%3]} alt='cover' fill={true} objectFit='cover' priority className='opacity-[60%]'/>
       <div className='relative top-[210px] z-20 text-center text-white'>
-        <h1 className='text-5xl font-medium font-semibold font-bold'> CAMPGROUND BOOKING WEBSITE</h1>
+        <h1 className='text-5xl font-bold'> CAMPGROUND BOOKING WEBSITE</h1>
         <h3 className='text-3xl font-semibold'> ADVENTURE AND EXPLORE THE WORLD</h3>
        </div>
         {/* {
           session? <div className='z-30 absolute right-[100px] top-10 font-semibold text-xl text-cyan-800'>Hello {session.user?.name}</div> : null
         } */}
 
-       <button className='bg-indigo-600 text-white   px-8 py-4  hover:bg-cyan-600 hover:transparent z-30 hover:text-white rounded-xl font-bold mx-2 absolute bottom-40 right-[670px] my-3'
-        onClick={(e)=>{e.stopPropagation(); router.push('/register')}}>
-         REGISTER
-       </button>
+        <div className='w-full h-fit flex flex-row justify-center absolute bottom-[350px]'>
+          <button className='bg-indigo-600 text-white px-8 py-4  hover:bg-cyan-600 hover:transparent z-30 hover:text-white rounded-xl font-bold mx-8'
+            onClick={(e)=>{e.stopPropagation(); router.push('/register')}}>
+            REGISTER
+          </button>
 
-       <button className='bg-orange-500 text-white   px-4 py-4  hover:bg-cyan-600 hover:transparent z-30 hover:text-white rounded-xl font-bold mx-2 absolute bottom-40 right-[450px] my-3'
-        onClick={(e)=>{e.stopPropagation(); router.push('/campground')}}>
-         VIEW CAMGROUND
-       </button>
+          <button className='bg-orange-500 text-white px-4 py-4  hover:bg-cyan-600 hover:transparent z-30 hover:text-white rounded-xl font-bold mx-8'
+            onClick={(e)=>{e.stopPropagation(); router.push('/campground')}}>
+            VIEW CAMGROUND
+          </button>
+        </div>
     </div>
     
 

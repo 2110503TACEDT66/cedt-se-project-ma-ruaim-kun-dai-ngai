@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 
-export default function ReplyButton({reviewId} : {reviewId : string}) {
+export default function ReplyButton({reviewId, token, checkCanReply} : {reviewId : string, token: string|undefined, checkCanReply:boolean}) {
 
 // const ButtonComponent: React.FC = ({id} : {id:String}) => {
 
@@ -32,7 +32,7 @@ export default function ReplyButton({reviewId} : {reviewId : string}) {
       {showButtons ?
         <div className="my-5 mx-5">
             <input type="text" id="replyText" name="replyText" placeholder="Add your reply" onChange={(e) => setReplyText(e.target.value)}/>
-            <input type="submit" id="submitReply" name="submitReply" placeholder="Send reply" onClick={() => {addReply(replyText, reviewId);  RefreshActionReplys();}}/>
+            <input type="submit" id="submitReply" name="submitReply" placeholder="Send reply" onClick={() => {addReply(replyText, reviewId, token , checkCanReply);  RefreshActionReplys();}}/>
         </div> : null
               }
     </div>

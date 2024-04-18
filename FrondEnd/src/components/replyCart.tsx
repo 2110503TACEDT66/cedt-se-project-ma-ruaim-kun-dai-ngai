@@ -5,7 +5,7 @@ export default async function replyCart({ReviewId} : {ReviewId : string}) {
    const replys = await getReplys(ReviewId)
     //เเตก array
    util.inspect(replys, {showHidden: false, depth: null, colors: true})
-   console.log(replys)
+  //  console.log(replys)
 
    
 

@@ -20,6 +20,18 @@
     data: CampgroundItem[]
   }
 
+  interface Ratejson {
+    success : boolean,
+    count: number,
+    data: CampgroundItem[]
+  }
+
+  interface RateItem {
+    _id: string,
+    rateContent: string,
+    user: string,
+    campground: string,
+  }
 
   interface CampgroundItem {
     _id: string,
@@ -28,21 +40,16 @@
     picture:string,
     tel:string,
     __v:number
-
-    
   }
   interface UserItem {
     _id: string,
     name:string,
-    
   }
 
   interface ReviewItem {
     _id: string,
     content:string,
     user:UserItem,
-    
-    
   }
 
   
@@ -50,7 +57,6 @@
     _id: string,
     replyContent:string,
     user:UserItem,
-    
   }
 
 

@@ -1,13 +1,16 @@
 //'use client'
-
+import getUserProfile from "@/libs/getUserProfile";
 import Replylist from "./replylist"
 import getReplys from "@/libs/getReplys"
 import ReplyCart from "./replyCart"
 import React from "react";
 import { useState } from "react";
 import ReplyButton from "./ReplyButton";
+import { profile } from "console";
+import deleteReview from "@/libs/deleteReview";
+import DeleteReviewButton from "./deleteReview";
 
-export default function reviewlist({reviewItems} : {reviewItems:ReviewItem}) {
+export default async function reviewlist({reviewItems, token, checkCanReply, role} : {reviewItems:ReviewItem, token:string|undefined, checkCanReply:boolean, role:string|undefined}) {
 //    const util = require('util')
 //    const replys = await getReplys(reviewItems._id)
 //     //เเตก array
@@ -19,14 +22,27 @@ export default function reviewlist({reviewItems} : {reviewItems:ReviewItem}) {
     // const handleButtonClick = () => {
     // setShowButtons(!showButtons);
     // };
+
+    
+
+    var isAdmin = false
+
+    if (token != undefined) {
+        const profile = await getUserProfile(token)
+        if (profile.data.role == 'admin') {
+            isAdmin = true
+        }
+    }
    
 
     return (
         <div className="bg-white my-3">
             <div> {reviewItems.user.name}</div>
             <div> {reviewItems.content}</div>
-            <ReplyButton reviewId={reviewItems._id}/>
-            
+            <ReplyButton reviewId={reviewItems._id} token={token} checkCanReply={checkCanReply}/>
+
+            <DeleteReviewButton reviewId={reviewItems._id} token={token} isAdmin={isAdmin}/>
+
 {/* 
            <div className="bg-slate-400"> 
            {

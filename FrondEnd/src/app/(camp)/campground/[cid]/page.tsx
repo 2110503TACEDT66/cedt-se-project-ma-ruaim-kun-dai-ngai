@@ -5,6 +5,10 @@ import getReviews from '@/libs/getReviews'
 import Reviewlist from '@/components/reviewlist'
 import addReview from '@/libs/addReview'
 import { revalidateTag } from "next/cache";
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/libs/auth'
+import getBookings from '@/libs/getBookings'
+import Pagerating from '@/components/pagerating'
 
 export default async function CampDetailPage({params} : {params:{cid:string}} ) {
 
@@ -12,15 +16,38 @@ export default async function CampDetailPage({params} : {params:{cid:string}} ) 
     
      const campDetail = await getCamp(params.cid)
      const reviews = await getReviews(params.cid)
+     
+
+    
     //Mock Data for Demonstration Only
     util.inspect(reviews, {showHidden: false, depth: null, colors: true})
-    console.log(reviews)
- 
+    // console.log(reviews)
+
+    var checkCanReview = false
+    const session = await getServerSession(authOptions)
+    const campBookings = await getBookings(session?.user.token)
+    // console.log(campBookings);
+    if (campBookings != null && campBookings != undefined) {
+      for (let i = 0 ; i < campBookings.count; i++) {
+        if (campBookings.data[i].campground._id == params.cid) {
+          checkCanReview = true
+        }
+        
+      }
+    }
+
+    if (checkCanReview) {
+      console.log("can review")
+      console.log(session?.user.role)
+    } else {
+      console.log("cannot review")
+      console.log(session?.user.role)
+    }
   
     const addUser = async (addReviewData:FormData) => {
       "use server"
        const reviewText = addReviewData.get("reviewText")
-      if (reviewText) {
+      if (reviewText && checkCanReview) {
         addReview(reviewText.toString(),params.cid)
         // console.log('revalidate na')
         await new Promise( (resolve)=>setTimeout(resolve,1000) )
@@ -44,41 +71,29 @@ export default async function CampDetailPage({params} : {params:{cid:string}} ) 
 
              <div >
 
-              <div className=' mx-[100px] my-7 text-left text-white font-bold text-5xl uppercase'> {campDetail.data.name}</div>
+              <div className=' mx-[150px] my-20 text-left text-white font-bold text-5xl uppercase'> {campDetail.data.name}</div>
               
 
              <Link href={`/reservations?id=${params.cid}&model=${campDetail.data.name}`}>
-             <button className="rounded-xl font-bold bg-orange-500 text-white px-5 py-4 hover:bg-indigo-600 hover:text-white uppercase my-[200px] ">SELECT {campDetail.data.name}</button>
+             <button className="rounded-xl font-bold bg-orange-500 text-white px-5 py-4 hover:bg-indigo-600 hover:text-white uppercase my-[50px] ">SELECT {campDetail.data.name}</button>
              </Link>
              </div>
 
              
-         </div>
+         </div>        
 
-         <div className='bg-black w-full h-[30px]'></div>
-        
-
-         
-
-        <form action={addUser}>
-       
-        
-             <div className='flex items-center w-1/2 my-2 mx-[500px]'>
-                 {/* <label className="w-auto block text-gray-700 pr-4" htmlFor='reviewText'>
-                  comment</label> */}
-                  <input type='text' required id="reviewText" name="reviewText" placeholder='Type your review here' className="bg-white text-center border border-2 border-gray-200 rounded-xl w-[315px] p-2 text-gray-700  hover:ring-transparent"></input>
-             </div>
-
-             <button type="submit" className="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold my-5 mx-[100px]" >comment</button>
-             
+        <form action={addUser} className='w-full items-center flex flex-col my-5'>
+          <input type='text' required id="reviewText" name="reviewText" placeholder='Type your review here' className="bg-white text-center border border-2 border-gray-200 rounded-xl w-[315px] p-2 text-gray-700  hover:ring-transparent"></input>
+          <button type="submit" className="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-bold my-5 mx-[100px] hover:bg-cyan-600 hover:transparent" >COMMENT</button>
         </form>
 
+        <Pagerating checkCanRate={checkCanReview} paa={params.cid.toString()}/>
 
          
          {
             reviews.data.map((reviewItems:ReviewItem)=>(
                      
-                <Reviewlist reviewItems={reviewItems}/>
+                <Reviewlist reviewItems={reviewItems} token={session?.user.token} checkCanReply={checkCanReview} role={session?.user.role}/>
                 
               ))
         }
