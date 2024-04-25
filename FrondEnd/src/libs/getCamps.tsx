@@ -15,6 +15,7 @@ export default async function getCamps(value:string|null,object:Query|null) {
     }
     console.log('kdnvn')
     console.log(query)
+    console.log(value)
   // await new Promise((resolve)=>setTimeout(resolve,1000))
   if (value==null || value=='') {
 

@@ -8,9 +8,11 @@ import { getTodayDate } from "@mui/x-date-pickers/internals";
 import DateBar from "@/components/DateBar";
 import getReviews from "@/libs/getReviews";
 import { revalidateTag } from "next/cache";
+import getCampsSorted from "@/libs/getCampSorted";
 export default async function Campground() {
         revalidateTag("camps")
     const camps = await getCamps(null,null)
+    const campsSorted = await getCampsSorted()
     const today = new Date()
     const month = today.getMonth()
    return (
@@ -35,7 +37,16 @@ export default async function Campground() {
          </div>
          <DateBar></DateBar>
         <Suspense fallback={<p>Loading....<LinearProgress></LinearProgress></p>}>
+        <div className="my-10 flex flex-row mx-[90px] font-bold text-2xl">
+          <div className="mx-4 text-4xl text-orange-400">{camps.count} </div>
+          Campgrounds  Available
+          </div>
         <CarCatalog campJson={camps} />
+        <div className="my-10 flex flex-row mx-[90px] font-bold text-2xl">
+          <div className="mx-4 text-4xl text-orange-400">{campsSorted.count} </div>
+          Top-rated campgrounds
+          </div>
+        <CarCatalog campJson={campsSorted} />
         </Suspense>
 
         

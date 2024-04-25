@@ -85,10 +85,6 @@ export default  function CampCatalog({campJson}:{campJson:CampgroundJson}) {
          { 
         filter? <CampRe value={filterValue} object={object}/> : 
         <div>
-          <div className="my-10 flex flex-row mx-[90px] font-bold text-2xl">
-          <div className="mx-4 text-4xl text-orange-400">{campJsonReady.count} </div>
-          Campgrounds  Available
-          </div>
           <div style={{margin:"20Spx",display:"flex",flexDirection:"row",flexWrap:"wrap"
        ,justifyContent:"space-around" , alignContent:"space-around"}}>
         {

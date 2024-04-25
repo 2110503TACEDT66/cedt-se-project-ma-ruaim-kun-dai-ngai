@@ -5,7 +5,7 @@ import { Rating } from '@mui/material';
 import { useState } from 'react'
 import getRates from '@/libs/getRates';
 import { revalidateTag } from 'next/cache';
-
+import editCamp from '@/libs/editCamp';
 export default async function CampgroundCard( {carName,address,tel,imgSrc,onCompare,campid} : {carName:string,address:string,tel:string,imgSrc:string,onCompare?:Function,campid:string}) {
 
     const campRates = await getRates(campid)
@@ -23,7 +23,7 @@ export default async function CampgroundCard( {carName,address,tel,imgSrc,onComp
     var ravg = a/p
 
     if(ravg > 0) {
-      //revalidateTag('rates')
+      editCamp(campid, ravg, p);
     }
 
     return (

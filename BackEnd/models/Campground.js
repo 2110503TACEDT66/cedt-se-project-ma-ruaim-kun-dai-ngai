@@ -26,6 +26,12 @@ address:{
  activity : {
   type : String ,
   required : [true, 'Please add an activity']
+ },
+ avgRate: {
+  type: Number,
+ },
+ totalRate: {
+  type: Number
  }
 },{
     toJSON : {virtuals:true},
