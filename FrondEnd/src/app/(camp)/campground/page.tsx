@@ -10,7 +10,7 @@ import getReviews from "@/libs/getReviews";
 import { revalidateTag } from "next/cache";
 export default async function Campground() {
         revalidateTag("camps")
-    const camps = await getCamps()
+    const camps = await getCamps(null,null)
     const today = new Date()
     const month = today.getMonth()
    return (

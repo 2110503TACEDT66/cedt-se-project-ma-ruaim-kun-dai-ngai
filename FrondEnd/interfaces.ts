@@ -59,5 +59,9 @@
     user:UserItem,
   }
 
+  interface Query {
+    activity : string,
+    address : string
+  }
 
   

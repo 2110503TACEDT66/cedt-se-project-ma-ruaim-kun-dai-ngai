@@ -22,6 +22,10 @@ address:{
  tel:{
   type: String
   
+ },
+ activity : {
+  type : String ,
+  required : [true, 'Please add an activity']
  }
 },{
     toJSON : {virtuals:true},

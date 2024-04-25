@@ -23,11 +23,8 @@ export default async function CampgroundCard( {carName,address,tel,imgSrc,onComp
     var ravg = a/p
 
     if(ravg > 0) {
-      revalidateTag('rates')
+      //revalidateTag('rates')
     }
-
-    console.log('kuy')
-    console.log(ravg)
 
     return (
       <InteractiveCard contentName={carName}>
