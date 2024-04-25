@@ -48,3 +48,4 @@ CampgroundSchema.pre('deleteOne', {document:true , query: false} ,async function
 });
 
 module.exports=mongoose.model('Campground',CampgroundSchema);
+

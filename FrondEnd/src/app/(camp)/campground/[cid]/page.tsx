@@ -13,6 +13,8 @@ import Pagerating from '@/components/pagerating'
 export default async function CampDetailPage({params} : {params:{cid:string}} ) {
 
      const util = require('util')
+     //bdbflbl
+     
     
      const campDetail = await getCamp(params.cid)
      const reviews = await getReviews(params.cid)
