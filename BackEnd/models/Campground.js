@@ -27,6 +27,9 @@ address:{
   type : String ,
   required : [true, 'Please add an activity']
  },
+tag : {
+ type : [String]
+},
  avgRate: {
   type: Number,
  },

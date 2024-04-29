@@ -1,6 +1,7 @@
 // import { CarPanel } from "@/components/CarPanel";
 import getCamps from "@/libs/getCamps";
 import CarCatalog from "@/components/CampCatalog";
+import TopRatesCatalog from "@/components/TopRatesCatalog";
 import { Suspense } from "react";
 import Image from "next/image";
 import { LinearProgress } from "@mui/material";
@@ -46,7 +47,7 @@ export default async function Campground() {
           <div className="mx-4 text-4xl text-orange-400">{campsSorted.count} </div>
           Top-rated campgrounds
           </div>
-        <CarCatalog campJson={campsSorted} />
+        <TopRatesCatalog campJson={campsSorted} />
         </Suspense>
 
         

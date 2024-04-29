@@ -26,6 +26,7 @@ export default  function CampCatalog({campJson}:{campJson:CampgroundJson}) {
     var madi = {
       address:'',
       activity:'',
+      tag:''
     }
 
     
@@ -34,10 +35,10 @@ export default  function CampCatalog({campJson}:{campJson:CampgroundJson}) {
     const [filterValue,setFilterValue] = useState('')
     const [object,setObject] = useState(madi)
     const [search,setSearch] = useState<string|null>('')
-    const [showButtons, setShowButtons] = useState<boolean>(false);
+    const [sort, setsort] = useState<boolean>(false);
 
-    const handleButtonClick = () => {
-      setShowButtons(!showButtons);
+    const sortButton = () => {
+      setsort(!sort);
     };
 
     // const addSearch = async (addReviewData:FormData) => {
@@ -117,35 +118,57 @@ export default  function CampCatalog({campJson}:{campJson:CampgroundJson}) {
 
       {/* <button type="submit" onClick={(e)=>setFilter(!filter)} className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >reverse</button> */}
 
-      <button type="submit" onClick={(e)=>{setFilter(false);}} className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >All</button>
+      <button type="submit" onClick={(e)=>{setFilter(false);let newobject = { address:'', activity:'',tag:""};  setObject(newobject); setsort(false);}} className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >All</button>
        
-      <button type="submit" onClick={(e)=>{setFilter(true); setFilterValue('Rocks National Lakeshore')}} className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >Rock</button>
+      <button type="submit" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Hill'};  setObject(newobject); }} className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >Hill</button>
 
-      <button type="submit" onClick={(e)=>{setFilter(true); setFilterValue('Grand Canyon')}} className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >Grand</button>
+      <button type="submit" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Beach'};  setObject(newobject);}} className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >Beach</button>
       
-      <div>
-      <div onClick={handleButtonClick} className="bg-inherit hover:bg-red-800 hover:border-red-800 hover:text-black text-white px-4 py-1 rounded-md border-solid border-2 border-white font-normal text-xl underline-offset-0 my-4">
-        {showButtons ? 'Activity' : 'Activity'}
-      </div>
-      {showButtons && (
-        <div className="flex flex-col bg-black">
-
-        <input type="radio" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:object.address, activity:e.target.value};  setObject(newobject);} else {let newobject = { address:object.address, activity:''};  setObject(newobject);}}} value='Hiking' className="bg-black text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" name="kuy"></input>
-
-        <input type="radio" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:object.address, activity:e.target.value};  setObject(newobject);} else {let newobject = { address:object.address, activity:''};  setObject(newobject);}}} value='Fishing' className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" name="kuy"></input>
-  
-        <input type="radio" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:object.address, activity:e.target.value};  setObject(newobject);} else {let newobject = { address:object.address, activity:''};  setObject(newobject);}}} value='Biking' className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" name="kuy"></input>
-
-        </div>
-      )}
-      </div>
-
-      {/* <input type="radio" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:e.target.value, activity:object.activity};  setObject(newobject);  } else  { let newobject = { address:'', activity:object.activity};  setObject(newobject)}; }} value='Arizonia, United States' className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" name="kuy2"></input>
-
-      <input type="radio" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:e.target.value, activity:object.activity};  setObject(newobject);  } else  { let newobject = { address:'', activity:object.activity};  setObject(newobject)}; }} value='New Zealand' className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" name="kuy2"></input>
-         
-      <input type="radio" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:e.target.value, activity:object.activity};  setObject(newobject);  } else  { let newobject = { address:'', activity:object.activity};  setObject(newobject)}; }} value='Nevada' className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" name="kuy2"></input> */}
-
+      <div className="items-center">
+         <div onClick={sortButton} className="hover:text-black text-black px-4 py-1 rounded-md font-normal text-xl underline-offset-0">
+           {sort ? 'FILTER⬏' : 'FILTER⬎'}
+         </div>
+         {sort && (
+           <div className="flex flex-col items-center">
+            <div id="main" className="w-[20%]">
+            <div className="m-2">
+                 <div className="flex flex-col">
+                  Activity
+                  <div className="flex items-center m-1">
+                   <input type="radio" id="Hiking" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:object.address, activity:e.target.value,tag:""};  setObject(newobject);} else {let newobject = { address:object.address, activity:'',tag:''};  setObject(newobject);}}} value='Hiking' className="bg-white appearance-none border border-gray-300 rounded-full w-6 h-6 checked:bg-gray-600 checked:border-transparent mr-2" name="activity"></input>
+                   <label htmlFor="Hiking">Hiking</label>
+                  </div>
+                  <div className="flex items-center m-1">
+                   <input type="radio" id="Fishing" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:object.address, activity:e.target.value,tag:''};  setObject(newobject);} else {let newobject = { address:object.address, activity:'',tag:''};  setObject(newobject);}}} value='Fishing' className="bg-white appearance-none border border-gray-300 rounded-full w-6 h-6 checked:bg-gray-600 checked:border-transparent mr-2" name="activity"></input>
+                   <label htmlFor="Fishing">Fishing</label>
+                  </div>
+                  <div className="flex items-center m-1">
+                   <input type="radio" id="Biking" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:object.address, activity:e.target.value,tag:''};  setObject(newobject);} else {let newobject = { address:object.address, activity:'',tag:''};  setObject(newobject);}}} value='Biking' className="bg-white appearance-none border border-gray-300 rounded-full w-6 h-6 checked:bg-gray-600 checked:border-transparent mr-2" name="activity"></input>
+                   <label htmlFor="Biking">Biking</label>
+                  </div>
+                 </div>
+            </div>
+              <div className="m-2">
+                    <div className="flex flex-col">
+                      Address
+                      <div className="flex items-center m-1">
+                        <input type="radio" id="Arizonia, United States" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:e.target.value, activity:object.activity,tag:''};  setObject(newobject);  } else  { let newobject = { address:'', activity:object.activity,tag:''};  setObject(newobject)}; }} value='Arizonia, United States' className="bg-white appearance-none border border-gray-300 rounded-full w-6 h-6 checked:bg-gray-600 checked:border-transparent mr-2" name="address"></input>
+                        <label htmlFor="Arizonia, United States">Arizonia, United States</label>
+                      </div>
+                      <div className="flex items-center m-1">
+                        <input type="radio" id="New Zealand" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:e.target.value, activity:object.activity,tag:''};  setObject(newobject);  } else  { let newobject = { address:'', activity:object.activity,tag:''};  setObject(newobject)}; }} value='New Zealand' className="bg-white appearance-none border border-gray-300 rounded-full w-6 h-6 checked:bg-gray-600 checked:border-transparent mr-2" name="address"></input> 
+                        <label htmlFor="New Zealand">New Zealand</label>
+                      </div>
+                      <div className="flex items-center m-1">       
+                        <input type="radio" onChange={(e)=> {if (e.target.checked){setFilter(true); setFilterValue(''); let newobject = { address:e.target.value, activity:object.activity,tag:''};  setObject(newobject);  } else  { let newobject = { address:'', activity:object.activity,tag:''};  setObject(newobject)}; }} value='Nevada' className="bg-white appearance-none border border-gray-300 rounded-full w-6 h-6 checked:bg-gray-600 checked:border-transparent mr-2" name="address"></input>
+                        <label htmlFor="Nevada">Nevada</label>
+                      </div>
+                    </div>
+              </div>
+              </div>
+           </div>
+         )}
+         </div>
         {
           object.address
         }

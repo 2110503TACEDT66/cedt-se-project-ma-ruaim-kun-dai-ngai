@@ -61,7 +61,8 @@
 
   interface Query {
     activity : string,
-    address : string
+    address : string,
+    tag : string
   }
 
   

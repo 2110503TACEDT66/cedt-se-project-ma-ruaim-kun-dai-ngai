@@ -12,6 +12,11 @@ export default async function getCamps(value:string|null,object:Query|null) {
           query += object.activity;
 
        }
+       if (object.tag != '') {
+        query += '&tag='
+        query += object.tag;
+
+     }
     }
     console.log('kdnvn')
     console.log(query)
