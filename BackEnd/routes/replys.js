@@ -7,7 +7,7 @@ const {protect,authorize} = require('../middleware/auth')
 
 // router.route('/').get(protect,getBookings).post(protect, authorize('admin','user'),addBooking);
 // router.route('/:id').get(protect,getBooking).put(protect, authorize('admin','user'),updateBooking).delete(protect, authorize('admin','user'),deleteBooking);
-router.route('/').get(getReplys).post(addReply)
+router.route('/').get(getReplys).post(protect,addReply)
 router.route('/:id').get(getReply)
 module.exports=router;
 
@@ -58,6 +58,7 @@ module.exports=router;
  * @swagger
  * tags: 
  *   name: Replies
+ *   description: The rates managing API
  */
 
 /**
@@ -110,6 +111,8 @@ module.exports=router;
  *           example:
  *             replyContent: Reply example
  *             user: 65e30741129fdf3008bbb7f8
+ *     security:
+ *       - bearerAuth: []
  *     responses: 
  *       201:
  *         description: Created a new reply

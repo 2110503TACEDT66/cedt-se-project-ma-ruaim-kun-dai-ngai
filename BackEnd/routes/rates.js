@@ -7,7 +7,7 @@ const {protect,authorize} = require('../middleware/auth')
 
 // router.route('/').get(protect,getBookings).post(protect, authorize('admin','user'),addBooking);
 // router.route('/:id').get(protect,getBooking).put(protect, authorize('admin','user'),updateBooking).delete(protect, authorize('admin','user'),deleteBooking);
-router.route('/').get(getRates).post(addRate)
+router.route('/').get(getRates).post(protect,addRate)
 router.route('/:id').get(getRate)
 module.exports=router;
 
@@ -58,6 +58,7 @@ module.exports=router;
  * @swagger
  * tags: 
  *   name: Rates
+ *   description: The rates managing API
  */
 
 /**
@@ -116,6 +117,8 @@ module.exports=router;
  *             rateContent: 5
  *             user: 66157332e9c7e777ebeaa750
  *             campground: 65fd9a8ab477d9016553c764
+ *     security:
+ *       - bearerAuth: []
  *     responses: 
  *       201:
  *         description: Created a new rating

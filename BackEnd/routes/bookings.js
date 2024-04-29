@@ -63,13 +63,13 @@ const {getBookings,getBooking,addBooking,updateBooking, deleteBooking} = require
  */
 /**
  * @swagger
- * /bookings/{id}:
+ * /bookings/{bid}:
  *   get:
  *     summary: Returns the booking by the id
  *     tags: [Bookings]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bid
  *         schema:
  *           type: string
  *         required: true
@@ -88,7 +88,7 @@ const {getBookings,getBooking,addBooking,updateBooking, deleteBooking} = require
  */
 /**
  * @swagger
- * /campgrounds/{id}/bookings:
+ * /campgrounds/{bid}/bookings:
  *   post:
  *     summary: Add booking
  *     tags: [Bookings]
@@ -108,7 +108,7 @@ const {getBookings,getBooking,addBooking,updateBooking, deleteBooking} = require
  *                 type: integer
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bid
  *         schema:
  *           type: string
  *         required: true
@@ -127,13 +127,13 @@ const {getBookings,getBooking,addBooking,updateBooking, deleteBooking} = require
  */
 /**
  * @swagger
- * /bookings/{id}:
+ * /bookings/{bid}:
  *   put:
  *     summary: Update booking by the id
  *     tags: [Bookings]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bid
  *         schema:
  *           type: string
  *         required: true
@@ -166,13 +166,13 @@ const {getBookings,getBooking,addBooking,updateBooking, deleteBooking} = require
  */
 /**
  * @swagger
- * /bookings/{id}:
+ * /bookings/{bid}:
  *   delete:
  *     summary: Remove the booking by the id
  *     tags: [Bookings]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bid
  *         schema:
  *           type: string
  *         required: true

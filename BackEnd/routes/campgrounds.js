@@ -73,13 +73,13 @@
  */
 /**
  * @swagger
- * /campgrounds/{id}:
+ * /campgrounds/{cid}:
  *   get:
  *     summary: Returns the campground by the id
  *     tags: [Campgrounds]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: cid
  *         schema:
  *           type: string
  *         required: true
@@ -115,19 +115,21 @@
  *                 type: string
  *               tag:
  *                 type: array
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       201:
  *         description: The campground was successfully created
  */
 /**
  * @swagger
- * /campgrounds/{id}:
+ * /campgrounds/{cid}:
  *   put:
  *     summary: Update campground by the id
  *     tags: [Campgrounds]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: cid
  *         schema:
  *           type: string
  *         required: true
@@ -151,6 +153,8 @@
  *                 type: string
  *               tag:
  *                 type: array
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: The campground was successfully updated
@@ -159,17 +163,19 @@
  */
 /**
  * @swagger
- * /campgrounds/{id}:
+ * /campgrounds/{cid}:
  *   delete:
  *     summary: Remove the campground by the id
  *     tags: [Campgrounds]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: cid
  *         schema:
  *           type: string
  *         required: true
  *         description: The campground id
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: The campground was successfully deleted
@@ -188,7 +194,7 @@
   router.use('/:campgroundId/rates/',ratesRouter)
 
   router.route('/').get(getCampgrounds).post(protect,authorize('admin'),createCampground);
-  router.route('/:id').get(getCampground).put(updateCampground).delete(protect,authorize('admin'),deleteCampground);
+  router.route('/:id').get(getCampground).put(protect,authorize('admin'),updateCampground).delete(protect,authorize('admin'),deleteCampground);
 
   
 
