@@ -62,7 +62,14 @@
   interface Query {
     activity : string,
     address : string,
-    tag : string
+    tag : string,
+  }
+
+  interface HistoryItem {
+    _id: string,
+    content:string,
+    user:string
+    
   }
 
   

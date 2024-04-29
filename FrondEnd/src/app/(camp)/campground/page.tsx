@@ -10,14 +10,35 @@ import DateBar from "@/components/DateBar";
 import getReviews from "@/libs/getReviews";
 import { revalidateTag } from "next/cache";
 import getCampsSorted from "@/libs/getCampSorted";
+import getHistorys from "@/libs/getHistorys";
+import HistoryList from "@/components/HistoryList";
 export default async function Campground() {
-        revalidateTag("camps")
+        // revalidateTag("camps")
     const camps = await getCamps(null,null)
     const campsSorted = await getCampsSorted()
     const today = new Date()
     const month = today.getMonth()
+    const historys = await getHistorys();
+
+    console.log(historys);
+    //1466
    return (
     <main className="text-center">
+      <div className="flex z-50  text- fixed mx-[1466px] h-[100%] w-[50%] bg-slate-800 opacity-0 hover:mx-[1100px] hover:opacity-70 duration-1000">
+        <div className="">
+          <div className="font-bold ml-[90px] text-5xl my-[10px]">History</div>
+          <div className="text-slate-200 ml-[90px]">__________________________________</div>
+        <div className="ml-[90px]">
+        {
+                historys.data.map((historyItems:HistoryItem)=>(
+                        
+                  <HistoryList historyItem={historyItems} />
+                    
+                  ))
+            }
+        </div>
+        </div>
+      </div>
         <div className="flex flex-row">
          <div className="bg-orange-100 w-[55%] h-[300px] px-10 py-10">
             <div className="w-[80%] bg-white h-full rounded-xl mx-20 px-4 py-4">
@@ -38,10 +59,10 @@ export default async function Campground() {
          </div>
          <DateBar></DateBar>
         <Suspense fallback={<p>Loading....<LinearProgress></LinearProgress></p>}>
-        <div className="my-10 flex flex-row mx-[90px] font-bold text-2xl">
+        {/* <div className="my-10 flex flex-row mx-[90px] font-bold text-2xl">
           <div className="mx-4 text-4xl text-orange-400">{camps.count} </div>
           Campgrounds  Available
-          </div>
+          </div> */}
         <CarCatalog campJson={camps} />
         <div className="my-10 flex flex-row mx-[90px] font-bold text-2xl">
           <div className="mx-4 text-4xl text-orange-400">{campsSorted.count} </div>
@@ -55,6 +76,8 @@ export default async function Campground() {
         {/* <hr className="my-10" />
         <h1 className='text-x font-md '>Try Client-side Car Panel</h1>
         <CarPanel/> */}
+
+       <HistoryList historyItem={historys} />
     </main> 
 
    );

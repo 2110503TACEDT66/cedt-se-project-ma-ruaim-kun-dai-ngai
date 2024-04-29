@@ -2,7 +2,7 @@ export default async function getCamps(value:string|null,object:Query|null) {
     var query = '?';
     if (object!=null) {
       if (object.address != '') {
-         query += '&address='
+         query += '&country='
          query += object.address;
 
 

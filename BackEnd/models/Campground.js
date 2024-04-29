@@ -27,6 +27,9 @@ address:{
   type : String ,
   required : [true, 'Please add an activity']
  },
+ country : {
+  type : String ,
+ },
 tag : {
  type : [String]
 },

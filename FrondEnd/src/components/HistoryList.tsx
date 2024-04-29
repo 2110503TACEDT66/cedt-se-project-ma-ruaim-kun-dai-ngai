@@ -5,9 +5,8 @@ export default async function HistoryList({historyItem}: {historyItem:HistoryIte
 
     return (
         <div>
-            
-                <div className="text-black">{historyItem.content}</div>
-            
+                <div className="text-white mt-1">{historyItem.content}</div>
+                <div className="text-slate-200">------------</div>
         </div>
     )
 }
