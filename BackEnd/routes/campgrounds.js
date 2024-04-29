@@ -194,7 +194,7 @@
   router.use('/:campgroundId/rates/',ratesRouter)
 
   router.route('/').get(getCampgrounds).post(protect,authorize('admin'),createCampground);
-  router.route('/:id').get(getCampground).put(protect,authorize('admin'),updateCampground).delete(protect,authorize('admin'),deleteCampground);
+  router.route('/:id').get(getCampground).put(updateCampground).delete(protect,authorize('admin'),deleteCampground);
 
   
 
