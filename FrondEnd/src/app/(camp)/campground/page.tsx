@@ -20,7 +20,7 @@ export default async function Campground() {
     const month = today.getMonth()
     const historys = await getHistorys();
 
-    console.log(historys);
+    // console.log(historys);
     //1466
    return (
     <main className="text-center">
@@ -31,7 +31,7 @@ export default async function Campground() {
         <div className="ml-[90px]">
         {   
             historys ? 
-                historys.data.map((historyItems:HistoryItem)=>(
+                historys.data.reverse().map((historyItems:HistoryItem)=>(
                         
                   <HistoryList historyItem={historyItems} />
                     
