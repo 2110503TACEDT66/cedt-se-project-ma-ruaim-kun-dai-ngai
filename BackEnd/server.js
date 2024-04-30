@@ -65,7 +65,7 @@ const bookings=require('./routes/bookings');
 const reviews = require('./routes/reviews')
 const replys = require('./routes/replys');
 const swaggerJSDoc = require('swagger-jsdoc');
-// const rates = require('./routes/rates')
+const rates = require('./routes/rates')
 const historys = require('./routes/historys');
 
 app.use('/api/v1/campgrounds',campgrounds);
@@ -73,7 +73,7 @@ app.use('/api/v1/auth',users);
 app.use('/api/v1/bookings',bookings);
 app.use('/api/v1/reviews',reviews);
 app.use('/api/v1/replys',replys);
-// app.use('/api/v1/rates', rates)
+app.use('/api/v1/rates', rates)
 app.use('/api/v1/historys',historys);
 
 const PORT = process.env.PORT || 5000;

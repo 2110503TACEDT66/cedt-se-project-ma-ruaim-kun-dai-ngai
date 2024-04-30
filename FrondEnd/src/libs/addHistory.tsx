@@ -7,7 +7,7 @@ import { StringExpressionOperatorReturningNumber } from "mongoose"
 export default async function addHistory(contentHistory:string) {
 
 
-    
+
     const session = await getServerSession(authOptions)
     if (!session || !session.user.token ) return 
         
@@ -25,7 +25,7 @@ export default async function addHistory(contentHistory:string) {
         },
         body: JSON.stringify({
             content: contentHistory,
-            //user:profile.data._id,
+            // user:profile.data._id,
             user:"65fed212e81ddda40bd9408b"
         }),
     } )
