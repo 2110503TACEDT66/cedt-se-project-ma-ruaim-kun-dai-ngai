@@ -36,7 +36,7 @@ export default function Banner() {
 
           <button className='bg-orange-500 text-white px-4 py-4  hover:bg-cyan-600 hover:transparent z-30 hover:text-white rounded-xl font-bold mx-8'
             onClick={(e)=>{e.stopPropagation(); router.push('/campground')}}>
-            VIEW CAMGROUND
+            VIEW CAMPGROUND
           </button>
         </div>
     </div>

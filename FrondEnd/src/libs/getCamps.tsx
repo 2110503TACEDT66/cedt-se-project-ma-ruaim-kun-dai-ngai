@@ -37,7 +37,7 @@ export default async function getCamps(value:string|null,object:Query|null) {
       return await response.json()
   } else {
 
-    const rootname = ['Grand Canyon','Valley of Fire State Park','Rocks National Lakeshore']
+    const rootname = ['Grand Canyon','Valley of Fire State Park','Rocks National Lakeshore','Hossa National Park','Tasman Holiday Parks','The Headwaters Eco Lodge']
     for (const item of rootname) {
         if (item.toLowerCase().includes(value.toLowerCase())) {
             console.log(value.toLowerCase())
