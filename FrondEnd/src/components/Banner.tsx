@@ -28,7 +28,7 @@ export default function Banner() {
           session? <div className='z-30 absolute right-[100px] top-10 font-semibold text-xl text-cyan-800'>Hello {session.user?.name}</div> : null
         } */}
 
-        <div className='w-full h-fit flex flex-row justify-center absolute bottom-[350px]'>
+        <div className='w-full h-fit flex flex-row justify-center absolute bottom-[25%]'>
           <button className='bg-indigo-600 text-white px-8 py-4  hover:bg-cyan-600 hover:transparent z-30 hover:text-white rounded-xl font-bold mx-8'
             onClick={(e)=>{e.stopPropagation(); router.push('/register')}}>
             REGISTER

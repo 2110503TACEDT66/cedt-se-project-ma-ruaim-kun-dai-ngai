@@ -24,7 +24,7 @@ export default async function Campground() {
     //1466
    return (
     <main className="text-center">
-      <div className="flex z-50  text- fixed mx-[1466px] h-[100%] w-[50%] bg-slate-800 opacity-0 hover:mx-[1100px] hover:opacity-70 duration-1000">
+      <div className="flex z-50  text- fixed mx-[98%] h-[100%] w-[50%] bg-slate-800 opacity-0 hover:mx-[70%] hover:opacity-70 duration-1000">
         <div className="">
           <div className="font-bold ml-[90px] text-5xl my-[10px]">History</div>
           <div className="text-slate-200 ml-[90px]">__________________________________</div>
