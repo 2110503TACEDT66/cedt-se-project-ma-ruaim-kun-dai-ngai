@@ -79,13 +79,13 @@ export default  function CampCatalog({campJson}:{campJson:CampgroundJson}) {
             <form onSubmit={handleSubmit} className='w-full items-center flex flex-row my-5 justify-center mx-[340px]'>
               <input type='text' required id="searchText" name="searchText" placeholder='Find campground name here' className="bg-white text-center rounded-xl w-[500px] h-[50px] p-2 text-gray-700 focus:outline-none focus:white" ></input>
               {/* <button type="submit" className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" onClick={(e)=>{var form = new FormData; var text = form.get('searchText'); alert(text)  }}>SEARCH</button> */}
-              <button type='submit' className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >SEARCH</button>
+              <button type='submit' id="searchButton" className="bg-indigo-600 text-white rounded-2xl px-3 h-[50px] font-bold my-5 mx-3 hover:bg-cyan-600 hover:transparent" >SEARCH</button>
             </form>
           </div>
       <div className="flex flex-row ">
         <div className="ml-10 my-40 w-[25%]">
         <div className="items-center bg-white rounded-xl p-2 shadow-xl">
-         <div onClick={(e) => {setsort(!sort); let newobject = { address:'', activity:'',tag:object.tag,avgRate:''}; setObject(newobject);}} className="hover:text-black text-black px-4 py-1 rounded-md text-xl underline-offset-0 font-bold">
+         <div onClick={(e) => {setsort(!sort); let newobject = { address:'', activity:'',tag:object.tag,avgRate:''}; setObject(newobject);}} className="hover:text-black text-black px-4 py-1 rounded-md text-xl underline-offset-0 font-bold" id="filter">
            {sort ? 'FILTER⬏' : 'FILTER⬎'}
          </div>
          {sort && (
@@ -149,11 +149,11 @@ export default  function CampCatalog({campJson}:{campJson:CampgroundJson}) {
               </div>
               <div className="m-2">
                 <div className="font-bold m-2">Tags</div>
-              <button type="submit" onClick={(e)=>{setFilter(false);let newobject = { address:'', activity:'',tag:"",avgRate:object.avgRate};  setObject(newobject); setsort(false);}} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent" >All</button>
-              <button type="submit" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Hill',avgRate:object.avgRate};  setObject(newobject); }} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent text-sm" >Hill</button>        
-              <button type="submit" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Beach',avgRate:object.avgRate};  setObject(newobject);}} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent text-sm" >Beach</button>
-              <button type="submit" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Forest',avgRate:object.avgRate};  setObject(newobject);}} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent text-sm" >Forest</button>
-              <button type="submit" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Lake',avgRate:object.avgRate};  setObject(newobject);}} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent text-sm" >Lake</button>
+              <button type="submit" id="all" onClick={(e)=>{setFilter(false);let newobject = { address:'', activity:'',tag:"",avgRate:object.avgRate};  setObject(newobject); setsort(false);}} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent" >All</button>
+              <button type="submit" id="hill" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Hill',avgRate:object.avgRate};  setObject(newobject); }} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent text-sm" >Hill</button>        
+              <button type="submit" id="beach" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Beach',avgRate:object.avgRate};  setObject(newobject);}} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent text-sm" >Beach</button>
+              <button type="submit" id="forest" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Forest',avgRate:object.avgRate};  setObject(newobject);}} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent text-sm" >Forest</button>
+              <button type="submit" id="lake" onClick={(e)=>{setFilter(true); setFilterValue('') ; let newobject = { address:object.address , activity:object.activity,tag:'Lake',avgRate:object.avgRate};  setObject(newobject);}} className="bg-slate-200 text-black rounded-2xl px-3 h-[30px] my-1 mx-2 hover:bg-slate-400 hover:transparent text-sm" >Lake</button>
               </div>
            </div>
          )}

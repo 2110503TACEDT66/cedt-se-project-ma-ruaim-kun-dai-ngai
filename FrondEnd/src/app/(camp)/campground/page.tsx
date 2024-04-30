@@ -66,7 +66,7 @@ export default async function Campground() {
           Campgrounds  Available
           </div> */}
         <CarCatalog campJson={camps} />
-        <div className="my-10 flex flex-row mx-[90px] font-bold text-2xl">
+        <div id="top-rated" className="my-10 flex flex-row mx-[90px] font-bold text-2xl">
           <div className="mx-4 text-4xl text-orange-400">{campsSorted.count} </div>
           Top-rated campgrounds
           </div>
