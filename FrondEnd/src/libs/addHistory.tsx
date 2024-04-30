@@ -5,6 +5,9 @@ import { authOptions } from "@/libs/auth"
 import { revalidateTag } from "next/cache"
 import { StringExpressionOperatorReturningNumber } from "mongoose"
 export default async function addHistory(contentHistory:string) {
+
+
+    
     const session = await getServerSession(authOptions)
     if (!session || !session.user.token ) return 
         
