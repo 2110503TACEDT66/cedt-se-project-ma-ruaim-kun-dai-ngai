@@ -136,28 +136,28 @@ exports.addRate=async (req,res,next)=> {
 //     }
 //  };
 
- exports.deleteRate = async (req,res,next)=> {
-    try{
-       const rate = await Rate.findById(req.params.id);
+//  exports.deleteRate = async (req,res,next)=> {
+//     try{
+//        const rate = await Rate.findById(req.params.id);
       
-      if (!rate) {
-         return res.status(404).json({success: false, message: `No rate with the id of ${req.params.id}`});
-      }
+//       if (!rate) {
+//          return res.status(404).json({success: false, message: `No rate with the id of ${req.params.id}`});
+//       }
 
-      //Make sure user is the appointment owner
-//    if  (rate.user.toString()!==req.user.id && req.user.role !== 'admin') {
-//    return res.status(401).json({success:false,message:`User ${req.user.id} is not authorized to delete this rate`});
-//      }
+//       //Make sure user is the appointment owner
+// //    if  (rate.user.toString()!==req.user.id && req.user.role !== 'admin') {
+// //    return res.status(401).json({success:false,message:`User ${req.user.id} is not authorized to delete this rate`});
+// //      }
       
-      await rate.deleteOne();
+//       await rate.deleteOne();
 
-      res.status(200).json({
-        success:true,
-        data:{}
-      })
+//       res.status(200).json({
+//         success:true,
+//         data:{}
+//       })
  
-    } catch(error) {
-      console.log(error);
-      return res.status(500).json({success:false,message:'Cannot delete rate'});
-    }
- };
+//     } catch(error) {
+//       console.log(error);
+//       return res.status(500).json({success:false,message:'Cannot delete rate'});
+//     }
+//  };
