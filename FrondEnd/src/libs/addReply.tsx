@@ -7,6 +7,10 @@ export default async function addReply(contentReply:string,reviewID:string, toke
     // if (getUserID() == undefined || getUserID() == null) {
     //     redirect('/')
     //  }
+    if (contentReply.length > 50) {
+        alert('Your reply is too long')
+        return
+     }
      if (contentReply == null) {
         return
     }

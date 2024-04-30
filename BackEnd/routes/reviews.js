@@ -13,7 +13,7 @@ router.use('/:reviewId/replys/',replysRouter)
 // router.route('/:id').get(protect,getBooking).put(protect, authorize('admin','user'),updateBooking).delete(protect, authorize('admin','user'),deleteBooking);
 
 
-router.route('/').get(getReviews).post(protect,addReview);
+router.route('/').get(getReviews).post(addReview);
 router.route('/:id').get(getReview).delete(deleteReview);
 module.exports=router;
 

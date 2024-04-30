@@ -99,7 +99,7 @@ exports.addReview=async (req,res,next)=> {
 
    } catch(err) {
      console.log(err.stack);
-     return res.status(500).json({success:false,message:'Cannot create booking'});
+     return res.status(500).json({success:false,message:'Cannot create review'});
    }
 }
 

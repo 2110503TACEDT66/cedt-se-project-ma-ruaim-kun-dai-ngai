@@ -7,7 +7,7 @@ const {protect,authorize} = require('../middleware/auth')
 
 // router.route('/').get(protect,getBookings).post(protect, authorize('admin','user'),addBooking);
 // router.route('/:id').get(protect,getBooking).put(protect, authorize('admin','user'),updateBooking).delete(protect, authorize('admin','user'),deleteBooking);
-router.route('/').get(getReplys).post(protect,addReply)
+router.route('/').get(getReplys).post(addReply)
 router.route('/:id').get(getReply)
 module.exports=router;
 

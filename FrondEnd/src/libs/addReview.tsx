@@ -4,11 +4,20 @@ import getUserProfile from "./getUserProfile"
 import { authOptions } from "@/libs/auth"
 import { revalidateTag } from "next/cache"
 export default async function addReview(contentReview:string,idcamp:string) {
+    if (contentReview.length > 50) {
+       alert('Your review is too long')
+       return
+    }
+
+
+
     const session = await getServerSession(authOptions)
     if (!session || !session.user.token ) return 
         
 
     const profile = await getUserProfile(session.user.token)
+
+    
 
 
 

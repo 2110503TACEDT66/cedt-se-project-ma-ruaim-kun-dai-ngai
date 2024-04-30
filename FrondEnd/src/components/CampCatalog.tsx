@@ -58,7 +58,7 @@ export default  function CampCatalog({campJson}:{campJson:CampgroundJson}) {
        const searchText = formData.get('searchText')
       //  alert(searchText)
        
-       if (searchText) {
+       if (searchText && searchText.toString().length <= 50) {
         setFilter(true);
         setFilterValue(searchText.toString().toLowerCase())
         passHistory(searchText.toString());
