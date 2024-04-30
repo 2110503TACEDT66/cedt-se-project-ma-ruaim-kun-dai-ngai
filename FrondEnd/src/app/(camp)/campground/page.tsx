@@ -13,7 +13,7 @@ import getCampsSorted from "@/libs/getCampSorted";
 import getHistorys from "@/libs/getHistorys";
 import HistoryList from "@/components/HistoryList";
 export default async function Campground() {
-        // revalidateTag("camps")
+        revalidateTag("camps")
     const camps = await getCamps(null,null)
     const campsSorted = await getCampsSorted()
     const today = new Date()

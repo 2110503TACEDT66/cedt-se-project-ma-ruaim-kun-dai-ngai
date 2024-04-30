@@ -43,6 +43,12 @@ export default function Bookinglist({bookingItems , token}:{bookingItems:Reserva
             <MenuItem value="65fd9bdeb477d9016553c767">Grand Canyon</MenuItem>
             <MenuItem value="65fd9a8ab477d9016553c764">Rocks National Lakeshore</MenuItem>
             <MenuItem value="65fd99a7b477d9016553c761">Valley of Fire State Park</MenuItem>
+            <MenuItem value="662f783fe80bb48c8b06168b">The Headwaters Eco Lodge</MenuItem>
+            <MenuItem value="662f7703e80bb48c8b061688">Tasman Holiday Parks</MenuItem>
+            <MenuItem value="662f7933e80bb48c8b06168e">Hossa National Park</MenuItem>
+
+            
+
 
          </Select> : bookingItems.campground.name
       }
