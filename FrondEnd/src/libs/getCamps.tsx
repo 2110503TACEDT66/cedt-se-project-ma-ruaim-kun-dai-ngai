@@ -4,8 +4,6 @@ export default async function getCamps(value:string|null,object:Query|null) {
       if (object.address != '') {
          query += '&country='
          query += object.address;
-
-
       }
       if (object.activity != '') {
           query += '&activity='
@@ -17,6 +15,11 @@ export default async function getCamps(value:string|null,object:Query|null) {
         query += object.tag;
 
      }
+    if (object.avgRate != '') {
+        query += '&avgRate[gte]='
+        query += object.avgRate;
+
+    }
     }
     console.log('kdnvn')
     console.log(query)
@@ -33,6 +36,14 @@ export default async function getCamps(value:string|null,object:Query|null) {
 
       return await response.json()
   } else {
+
+    const rootname = ['Grand Canyon','Valley of Fire State Park','Rocks National Lakeshore']
+    for (const item of rootname) {
+        if (item.toLowerCase().includes(value.toLowerCase())) {
+            console.log(value.toLowerCase())
+            value = item;
+        }
+    }
 
 
       const response = await fetch(`${process.env.BACKEND_URL}/api/v1/campgrounds?name=${value}`, {next: {tags:['camps']}})

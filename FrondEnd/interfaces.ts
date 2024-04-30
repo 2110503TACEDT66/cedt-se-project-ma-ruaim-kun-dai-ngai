@@ -63,6 +63,7 @@
     activity : string,
     address : string,
     tag : string,
+    avgRate : string
   }
 
   interface HistoryItem {
