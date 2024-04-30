@@ -264,13 +264,13 @@ export default  function CampCatalog({campJson}:{campJson:CampgroundJson}) {
            </div>
          )}
          </div> */}
-        {
+        {/* {
           object.address
         }
 
          {
           object.activity
-        }
+        } */}
        </div>
 
     )
