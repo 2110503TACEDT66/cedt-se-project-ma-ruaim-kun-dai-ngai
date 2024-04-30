@@ -2,6 +2,9 @@ import { getServerSession } from "next-auth"
 import getHistorys from "@/libs/getHistorys"
 
 export default async function HistoryList({historyItem}: {historyItem:HistoryItem}){
+    if (historyItem == null || historyItem == undefined) {
+        return
+    }
 
     return (
         <div>

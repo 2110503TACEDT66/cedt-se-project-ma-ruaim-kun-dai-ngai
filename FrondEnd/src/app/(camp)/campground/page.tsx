@@ -29,12 +29,14 @@ export default async function Campground() {
           <div className="font-bold ml-[90px] text-5xl my-[10px]">History</div>
           <div className="text-slate-200 ml-[90px]">__________________________________</div>
         <div className="ml-[90px]">
-        {
+        {   
+            historys ? 
                 historys.data.map((historyItems:HistoryItem)=>(
                         
                   <HistoryList historyItem={historyItems} />
                     
                   ))
+                  : null
             }
         </div>
         </div>

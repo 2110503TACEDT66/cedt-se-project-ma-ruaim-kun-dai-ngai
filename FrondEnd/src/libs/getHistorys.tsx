@@ -10,7 +10,7 @@ export default async function getHistorys() {
     if (!session || !session.user.token ) return 
         
 
-    const profile = await getUserProfile(session.user.token)
+    // const profile = await getUserProfile(session.user.token)
 
     const response = await fetch(`${process.env.BACKEND_URL}/api/v1/historys`,  {
         next: {tags:['historys']},
