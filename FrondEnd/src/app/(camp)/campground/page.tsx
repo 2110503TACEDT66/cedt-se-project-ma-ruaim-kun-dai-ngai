@@ -16,6 +16,9 @@ export default async function Campground() {
         revalidateTag("camps")
     const camps = await getCamps(null,null)
     const campsSorted = await getCampsSorted()
+    campsSorted.data = campsSorted.data.reverse()
+    console.log(campsSorted)
+    
     const today = new Date()
     const month = today.getMonth()
     const historys = await getHistorys();

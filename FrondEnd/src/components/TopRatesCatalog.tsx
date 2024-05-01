@@ -7,7 +7,10 @@ import CampRe from "./CampRe"
 import RefreshAction from "../../RefreshActionCamps"
 
 export default  function TopRatesCatalog({campJson}:{campJson:CampgroundJson}) {
+     
     const campJsonReady = campJson
+    // console.log(campJsonReady.data)
+    
     
     return (
        <div>
